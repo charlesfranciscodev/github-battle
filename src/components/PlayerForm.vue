@@ -83,11 +83,7 @@ export default {
 </script>
 
 <style scoped>
-  .image-centered {
-    margin: 1rem auto;
-  }
-
-  .username-input {
+  .input {
     max-width: 50%;
     margin-bottom: 1rem;
   }

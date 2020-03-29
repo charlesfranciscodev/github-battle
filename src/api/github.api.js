@@ -62,10 +62,11 @@ export async function getUser(login) {
 
 export async function fetchPopularRepos(language) {
   let query = `{
-    search (query: "language:${language} stars:>10000", type: REPOSITORY, first: 30) {
+    search (query: "language:${language} stars:>100", type: REPOSITORY, first: 30) {
       edges {
         node {
           ... on Repository {
+            id
             name
             owner {
               login
@@ -84,6 +85,3 @@ export async function fetchPopularRepos(language) {
   let response = await fetchGitHubAPI(query);
   return response.data.search.edges;
 }
-
-// let repos = await fetchPopularRepos("all");
-// let cssRepos = await fetchPopularRepos("css");

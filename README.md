@@ -26,6 +26,7 @@ GitHub Battle Clone with Vue.js and GraphQL
   * sort results by stars in descending order
   * show each repo's info
     * name
+    * link to the repo
     * owner
       * name
       * avatar
