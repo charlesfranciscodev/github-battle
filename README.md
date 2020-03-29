@@ -2,6 +2,14 @@
 
 GitHub Battle Clone with Vue.js and GraphQL
 
+## Screenshots
+
+### Battle
+![Battle](./screenshots/battle.png)
+
+### Popular Repos
+![Popular](./screenshots/popular.png)
+
 ## Features
 
 ### Battle
@@ -18,7 +26,7 @@ GitHub Battle Clone with Vue.js and GraphQL
   * public repos count
   * blog url
 
-### Popular
+### Popular Repos
 * View a list of popular repos.
   * filter by language(s)
     * all languages
