@@ -50,10 +50,29 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Deployment
+
+Create your project in the Firebase console.
+
+#### Install the Firebase CLI
+
+`npm install -g firebase-tools`
+
+#### Login to Firebase.
+
+`firebase login`
+
+#### Build the app for production
+
+`npm run build`
+
+#### Initialize Firebase Project
+
+`firebase init`
+
+#### Deploy the app
+
+`firebase deploy`
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

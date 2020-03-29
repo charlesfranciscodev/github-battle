@@ -1,10 +1,8 @@
-import { GITHUB_API_TOKEN } from "./token";
-
 async function fetchGitHubAPI(query) {
   let options = {
     "method": "POST",
     "headers": {
-      "Authorization": `Token ${GITHUB_API_TOKEN}`
+      "Authorization": `Token ${process.env.VUE_APP_GITHUB_API_TOKEN}`
     },
     "body": JSON.stringify({
       "query": query

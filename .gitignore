@@ -20,5 +20,5 @@ yarn-error.log*
 *.sln
 *.sw?
 
-# API Token
-token.js
+# Firebase
+.firebase/
