@@ -53,6 +53,10 @@ const actions = {
         });
       }
     });
+  },
+
+  resetPlayer({ commit }, index) {
+    commit("clearPlayer", index); 
   }
 };
 
@@ -61,13 +65,14 @@ const mutations = {
     state["players"].splice([data["index"]], 1, data["player"]);
   },
   clearPlayer: function(state, index) {
-    state["players"][index] = {
+    let player = {
       "view": VIEW_CONSTANTS.PICK_USER,
       "user": {
         "id": index,
         "login": ""
       }
     };
+    state["players"].splice(index, 1, player);
   },
   clearErrors: (state) => (state["errors"] = []),
   addError: (state, error) => (state["errors"].push(error))

@@ -22,11 +22,7 @@ Github Battle Clone with Vue.js and GraphQL
 * View a list of popular repos.
   * filter by language(s)
     * all languages
-    * JavaScript
-    * Python
-    * Java
-    * TypeScript
-    * CSS
+    * or type a language (JavaScript, Java, Python, etc.)
   * sort results by stars in descending order
   * show each repo's info
     * name

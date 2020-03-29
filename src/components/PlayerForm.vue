@@ -19,7 +19,7 @@
       <h4 class="title is-4 user-login">@{{ player.user.login }}</h4>
     </div>
 
-    <button v-if="player.view === 'USER_PREVIEW'" class="button is-danger is-light reset-button">
+    <button v-on:click="resetButtonClick" v-if="player.view === 'USER_PREVIEW'" class="button is-danger is-light reset-button">
       Reset
     </button>
 
@@ -52,7 +52,7 @@ export default {
   "computed": mapGetters(["errors"]),
 
   "methods": {
-    ...mapActions(["fetchPlayerInfo"]),
+    ...mapActions(["fetchPlayerInfo", "resetPlayer"]),
 
     async submitButtonClick() {
       try {
@@ -64,6 +64,10 @@ export default {
       } catch {
         console.error("fetchPlayerInfo error");
       }
+    },
+
+    resetButtonClick() {
+      this.resetPlayer(this.index);
     }
   }
 };
