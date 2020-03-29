@@ -6,15 +6,19 @@
         </player-form>
       </div>
 
-      <button v-if="players[0].view === 'USER_PREVIEW' && players[1].view === 'USER_PREVIEW'" class="button is-black">
+      <button v-on:click="battleButtonClick" v-if="players[0].view === 'USER_PREVIEW' && players[1].view === 'USER_PREVIEW'" class="button is-black">
         Battle
+      </button>
+
+      <button v-on:click="resetBattleButtonClick" v-if="players[0].view === 'BATTLE_RESULT'" class="button is-danger">
+        Reset Battle
       </button>
     </div>
   </section>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 import PlayerForm from "../components/PlayerForm";
 
@@ -26,5 +30,17 @@ export default {
   },
 
   "computed": mapGetters(["players", "errors"]),
+
+  "methods": {
+    ...mapActions(["startBattle", "resetState"]),
+
+    battleButtonClick() {
+      this.startBattle();
+    },
+
+    resetBattleButtonClick() {
+      this.resetState();
+    }
+  }
 }
 </script>

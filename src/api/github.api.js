@@ -25,6 +25,7 @@ async function fetchUser(login) {
       login
       name
       location
+      websiteUrl
       followers {
         totalCount
       }
@@ -42,7 +43,6 @@ async function fetchUser(login) {
           }
         }
       }
-      websiteUrl
     }
   }
   `;

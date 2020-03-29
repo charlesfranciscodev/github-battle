@@ -1,5 +1,10 @@
 <template>
   <div class="column has-text-centered">
+      <div v-if="player.view === 'BATTLE_RESULT'">
+        <h3 v-if="index === 0" class="subtitle is-3">Winner</h3>
+        <h3 v-else class="subtitle is-3">Loser</h3>
+      </div>
+
     <div v-if="player.view === 'PICK_USER'">
       <h3 class="subtitle is-3">
         Player {{ index + 1 }}
@@ -19,18 +24,18 @@
       <h4 class="title is-4 user-login">@{{ player.user.login }}</h4>
     </div>
 
-    <button v-on:click="resetButtonClick" v-if="player.view === 'USER_PREVIEW'" class="button is-danger is-light reset-button">
-      Reset
+    <button v-on:click="resetPlayerButtonClick" v-if="player.view === 'USER_PREVIEW'" class="button is-danger is-light reset-button">
+      Reset Player
     </button>
 
     <div v-if="player.view === 'BATTLE_RESULT'">
-      <h5 class="title is-5">Score: 300000</h5>
-      <p>Charles-Antoine Francisco</p>
-      <p>Montreal, Canada</p>
-      <p>Followers: 34</p>
-      <p>Following: 17</p>
-      <p>Public Repos: 63</p>
-      <a href="https://charlesfranciscodev.github.io/">https://charlesfranciscodev.github.io/</a>
+      <h5 class="title is-5">Score: {{ player.user.score }}</h5>
+      <p>{{ player.user.name }}</p>
+      <p>{{ player.user.location }}</p>
+      <p>Followers: {{ player.user.followers.totalCount }}</p>
+      <p>Following: {{ player.user.following.totalCount }}</p>
+      <p>Public Repos: {{ player.user.repositories.nodes.length }}</p>
+      <a v-bind:href="player.user.websiteUrl">{{ player.user.websiteUrl }}</a>
     </div>
   </div>
 </template>
@@ -66,7 +71,7 @@ export default {
       }
     },
 
-    resetButtonClick() {
+    resetPlayerButtonClick() {
       this.resetPlayer(this.index);
     }
   }
