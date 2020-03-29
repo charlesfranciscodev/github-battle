@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 import { VIEW_CONSTANTS } from "../../constants";
 import { getUser } from "../../api/github.api";
 
@@ -19,7 +21,7 @@ function initialState() {
         }
       }
     ],
-    "errors": []
+    "errors": {}
   }
 }
 
@@ -33,14 +35,21 @@ const getters = {
 const actions = {
   async fetchPlayerInfo({ commit }, formData) {
     return new Promise(async function(resolve, reject) {
-      commit("clearErrors");
       if (formData["username"] === "") {
-        commit("addError", "Username required.");
+        let data = {
+          "error": "Username required.",
+          "index": formData["index"]
+        };
+        commit("addError", data);
         reject();
       } else {
         getUser(formData["username"]).then(function(user) {
           if (user === null) {
-            commit("addError", "Invalid username");
+            let data = {
+              "error": "Invalid username",
+              "index": formData["index"]
+            };
+            commit("addError", data);
             reject();
           } else {
             let player = {
@@ -52,6 +61,7 @@ const actions = {
               "index": formData["index"]
             }
             commit("setPlayer", data);
+            commit("clearError", formData["index"]);
             resolve();
           }
         });
@@ -106,8 +116,10 @@ const mutations = {
       state[key] = value;
     }
   },
-  clearErrors: (state) => (state["errors"] = []),
-  addError: (state, error) => (state["errors"].push(error))
+  addError: function(state, data) {
+    Vue.set(state["errors"], data["index"], data["error"]);
+  },
+  clearError: (state, index) => (delete state["errors"][index])
 }
 
 export default {

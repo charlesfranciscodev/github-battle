@@ -1,6 +1,6 @@
-# Github Battle
+# GitHub Battle
 
-Github Battle Clone with Vue.js and GraphQL
+GitHub Battle Clone with Vue.js and GraphQL
 
 ## Features
 

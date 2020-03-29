@@ -1,9 +1,13 @@
 <template>
   <div class="column has-text-centered">
-      <div v-if="player.view === 'BATTLE_RESULT'">
-        <h3 v-if="index === 0" class="subtitle is-3">Winner</h3>
-        <h3 v-else class="subtitle is-3">Loser</h3>
-      </div>
+    <div v-if="errors[index]" class="notification is-danger alert">
+      {{ errors[index] }}
+    </div>
+
+    <div v-if="player.view === 'BATTLE_RESULT'">
+      <h3 v-if="index === 0" class="subtitle is-3">Winner</h3>
+      <h3 v-else class="subtitle is-3">Loser</h3>
+    </div>
 
     <div v-if="player.view === 'PICK_USER'">
       <h3 class="subtitle is-3">
@@ -90,5 +94,10 @@ export default {
 
   .user-login {
     margin-bottom: 1rem;
+  }
+
+  .alert {
+    max-width: 50%;
+    margin: 1rem auto;
   }
 </style>

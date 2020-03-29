@@ -29,7 +29,7 @@ export default {
     "player-form": PlayerForm
   },
 
-  "computed": mapGetters(["players", "errors"]),
+  "computed": mapGetters(["players"]),
 
   "methods": {
     ...mapActions(["startBattle", "resetState"]),
