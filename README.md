@@ -2,6 +2,8 @@
 
 GitHub Battle Clone with Vue.js and GraphQL
 
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fcharlesfranciscodev%2Fgithub-battle)
+
 ## Screenshots
 
 ### Battle
