@@ -53,7 +53,7 @@ export async function getUser(login) {
   let user = await fetchUser(login);
   if (user !== null) {
     let starCount = user.repositories.nodes.reduce((acc, repo) => acc + repo.stargazers.totalCount, 0);
-    user["score"] = 3 * user.followers.totalCount + starCount;
+    user.score = 3 * user.followers.totalCount + starCount;
   }
   return user;
 }

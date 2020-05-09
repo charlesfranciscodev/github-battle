@@ -28,26 +28,26 @@ function initialState() {
 const state = initialState();
 
 const getters = {
-  players: (state) => state["players"],
-  errors: (state) => state["errors"]
+  players: (state) => state.players,
+  errors: (state) => state.errors
 }
 
 const actions = {
   async fetchPlayerInfo({ commit }, formData) {
     return new Promise(async function(resolve, reject) {
-      if (formData["username"] === "") {
+      if (formData.username === "") {
         let data = {
           "error": "Username required.",
-          "index": formData["index"]
+          "index": formData.index
         };
         commit("addError", data);
         reject();
       } else {
-        getUser(formData["username"]).then(function(user) {
+        getUser(formData.username).then(function(user) {
           if (user === null) {
             let data = {
               "error": "Invalid username",
-              "index": formData["index"]
+              "index": formData.index
             };
             commit("addError", data);
             reject();
@@ -58,10 +58,10 @@ const actions = {
             };
             let data = {
               "player": player,
-              "index": formData["index"]
+              "index": formData.index
             }
             commit("setPlayer", data);
-            commit("clearError", formData["index"]);
+            commit("clearError", formData.index);
             resolve();
           }
         });
@@ -85,7 +85,7 @@ const actions = {
   },
 
   resetPlayer({ commit }, index) {
-    commit("clearPlayer", index); 
+    commit("clearPlayer", index);
   },
 
   resetState({ commit }) {
@@ -95,10 +95,10 @@ const actions = {
 
 const mutations = {
   setPlayer: function(state, data) {
-    state["players"].splice([data["index"]], 1, data["player"]);
+    state.players.splice([data.index], 1, data.player);
   },
   setPlayers: function(state, players) {
-    state["players"] = players;
+    state.players = players;
   },
   clearPlayer: function(state, index) {
     let player = {
@@ -108,7 +108,7 @@ const mutations = {
         "login": ""
       }
     };
-    state["players"].splice(index, 1, player);
+    state.players.splice(index, 1, player);
   },
   clearState: function(state) {
     let s = initialState();
@@ -117,9 +117,9 @@ const mutations = {
     }
   },
   addError: function(state, data) {
-    Vue.set(state["errors"], data["index"], data["error"]);
+    Vue.set(state.errors, data.index, data.error);
   },
-  clearError: (state, index) => (delete state["errors"][index])
+  clearError: (state, index) => (delete state.errors[index])
 }
 
 export default {
