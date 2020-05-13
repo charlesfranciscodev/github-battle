@@ -36,7 +36,6 @@ export default {
 
   "methods": {
     fetchRepos() {
-      console.log("fetch", this.language);
       fetchPopularRepos(this.language)
       .then(repos => this.repositories = repos)
       .catch(error => console.error(error));

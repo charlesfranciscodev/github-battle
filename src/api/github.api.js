@@ -1,18 +1,8 @@
+import axios from "axios";
+
 async function fetchGitHubAPI(query) {
-  let options = {
-    "method": "POST",
-    "headers": {
-      "Authorization": `Token ${process.env.VUE_APP_GITHUB_API_TOKEN}`
-    },
-    "body": JSON.stringify({
-      "query": query
-    })
-  };
-  
-  return await fetch("https://api.github.com/graphql", options)
-  .then(response => {
-    return response.json()
-  });
+  let response =  await axios.post("https://github-battle-backend.glitch.me/api", { "query": query });
+  return response.data.data;
 }
 
 async function fetchUser(login) {
@@ -45,8 +35,8 @@ async function fetchUser(login) {
   }
   `;
 
-  let response = await fetchGitHubAPI(query);
-  return response.data.user;
+  let data = await fetchGitHubAPI(query);
+  return data.user;
 }
 
 export async function getUser(login) {
@@ -80,6 +70,6 @@ export async function fetchPopularRepos(language) {
   }
   `;
 
-  let response = await fetchGitHubAPI(query);
-  return response.data.search.edges;
+  let data = await fetchGitHubAPI(query);
+  return data.search.edges;
 }

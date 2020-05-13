@@ -42,7 +42,7 @@ GitHub Battle Clone with Vue.js and GraphQL
       * avatar
     * star count
 
-## Project setup
+## Frontend Setup
 ```
 npm install
 ```
@@ -75,6 +75,35 @@ Create your project in the Firebase console.
 #### Deploy the app
 
 `firebase deploy`
+
+### Node.js Backend to make calls to the GitHub API
+
+In order to protect the GitHub API key(s) in the production environment,
+the API calls are done with the help of a backend web server.
+Unlike in the frontend, we can hide the API token(s) in a backend server.
+
+## Backend Setup
+
+* Create an **Express** Project on [Glitch](https://glitch.com/)
+  * [Example Project](https://glitch.com/~github-battle-backend)
+* Add your **GitHub API Token** in the `.env` file.
+* Add these dependencies in the `package.json` file:
+  * cors
+  * body-parser
+  * axios
+* Create a new route to serve as an intermediate between the frontend and the GitHub API, as shown below.
+
+### Backend API Route Example Code
+
+```javascript
+app.post("/api", async (req, res) => {
+  let config = {
+    "headers": { "Authorization": `Token ${process.env.GITHUB_API_TOKEN}` }
+  };
+  let response = await axios.post("https://api.github.com/graphql", { "query": req.body.query }, config);
+  res.json(response.data);
+});
+```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
