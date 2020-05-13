@@ -76,13 +76,13 @@ Create your project in the Firebase console.
 
 `firebase deploy`
 
-### Node.js Backend to make calls to the GitHub API
+## Backend Setup
+
+### Why do we need a Backend/Web Server?
 
 In order to protect the GitHub API key(s) in the production environment,
-the API calls are done with the help of a backend web server.
-Unlike in the frontend, we can hide the API token(s) in a backend server.
-
-## Backend Setup
+the API calls are done with the help of a backend/web server.
+Unlike in the frontend, we can hide the API token(s) in the backend.
 
 * Create an **Express** Project on [Glitch](https://glitch.com/)
   * [Example Project](https://glitch.com/~github-battle-backend)
