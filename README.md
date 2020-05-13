@@ -42,6 +42,12 @@ GitHub Battle Clone with Vue.js and GraphQL
       * avatar
     * star count
 
+## Why do we need a Backend/Web Server?
+
+In order to protect the GitHub API key(s) in the production environment,
+the API calls are done with the help of a backend/web server.
+Unlike in the frontend, we can hide the API token(s) in the backend.
+
 ## Frontend Setup
 ```
 npm install
@@ -77,12 +83,6 @@ Create your project in the Firebase console.
 `firebase deploy`
 
 ## Backend Setup
-
-### Why do we need a Backend/Web Server?
-
-In order to protect the GitHub API key(s) in the production environment,
-the API calls are done with the help of a backend/web server.
-Unlike in the frontend, we can hide the API token(s) in the backend.
 
 * Create an **Express** Project on [Glitch](https://glitch.com/)
   * [Example Project](https://glitch.com/~github-battle-backend)
